@@ -181,7 +181,7 @@ static int tls_accept(struct tls_conn *tc)
 			break;
 
 		default:
-			DEBUG_WARNING("accept error: (r=%d, ssl_err=%d)\n",
+			DEBUG_WARNING("tdr accept error: (r=%d, ssl_err=%d)\n",
 				      r, ssl_err);
 			tls_flush_error();
 			err = EPROTO;
