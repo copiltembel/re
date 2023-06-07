@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/tdr/src/github/baresip/re'
+[ -d build ] || cmake -B build
+cmake --build build --parallel
+make: Leaving directory '/home/tdr/src/github/baresip/re'
+ 
