@@ -132,8 +132,8 @@ static void start_outbound(struct sipreg *reg, const struct sip_msg *msg)
 {
 	const struct sip_hdr *flowtimer;
 
-	if (!sip_msg_hdr_has_value(msg, SIP_HDR_REQUIRE, "outbound"))
-		return;
+	// if (!sip_msg_hdr_has_value(msg, SIP_HDR_REQUIRE, "outbound"))
+	// 	return;
 
 	flowtimer = sip_msg_hdr(msg, SIP_HDR_FLOW_TIMER);
 
@@ -189,6 +189,7 @@ static bool contact_handler(const struct sip_hdr *hdr,
 
 static void response_handler(int err, const struct sip_msg *msg, void *arg)
 {
+	printf("response_handler");
 	const struct sip_hdr *minexp;
 	struct sipreg *reg = arg;
 
