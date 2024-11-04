@@ -36,7 +36,7 @@ enum {
 	TCP_ACCEPT_TIMEOUT    = 32,
 	TCP_IDLE_TIMEOUT      = 900,
 	TCP_KEEPALIVE_TIMEOUT = 10,
-	TCP_KEEPALIVE_INTVAL  = 120,
+	TCP_KEEPALIVE_INTVAL  = 15,
 	TCP_BUFSIZE_MAX       = 65536,
 };
 
@@ -1981,7 +1981,7 @@ int  sip_keepalive_tcp(struct sip_keepalive *ka, struct sip_conn *conn,
 
 	if (!tmr_isrunning(&conn->tmr_ka)) {
 
-		interval = MAX(interval ? interval : TCP_KEEPALIVE_INTVAL,
+		interval = MIN(interval ? interval : TCP_KEEPALIVE_INTVAL,
 			       TCP_KEEPALIVE_TIMEOUT * 2);
 
 		conn->ka_interval = interval;
