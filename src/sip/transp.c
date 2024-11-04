@@ -25,6 +25,7 @@
 #include <re_sip.h>
 #include <re_net.h>
 #include "sip.h"
+#include <stdio.h>
 
 
 #define DEBUG_MODULE "transp"
@@ -1983,6 +1984,8 @@ int  sip_keepalive_tcp(struct sip_keepalive *ka, struct sip_conn *conn,
 
 		interval = MIN(interval ? interval : TCP_KEEPALIVE_INTVAL,
 			       TCP_KEEPALIVE_TIMEOUT * 2);
+
+		printf("Timer interval is %d", interval);
 
 		conn->ka_interval = interval;
 
