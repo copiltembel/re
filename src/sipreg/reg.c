@@ -17,7 +17,7 @@
 #include <re_msg.h>
 #include <re_sip.h>
 #include <re_sipreg.h>
-
+#include <stdio.h>
 
 enum {
 	DEFAULT_EXPIRES = 3600,
@@ -134,8 +134,10 @@ static void start_outbound(struct sipreg *reg, const struct sip_msg *msg)
 {
 	const struct sip_hdr *flowtimer;
 
-	if (!sip_msg_hdr_has_value(msg, SIP_HDR_REQUIRE, "outbound"))
+	if (!sip_msg_hdr_has_value(msg, SIP_HDR_REQUIRE, "outbound")) {
+		printf("No outbound header!\n");
 		return;
+	}
 
 	flowtimer = sip_msg_hdr(msg, SIP_HDR_FLOW_TIMER);
 
