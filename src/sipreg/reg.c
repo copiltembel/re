@@ -132,11 +132,11 @@ static void keepalive_handler(int err, void *arg)
 
 static void start_outbound(struct sipreg *reg, const struct sip_msg *msg)
 {
-	const struct sip_hdr *flowtimer;
+	const struct sip_hdr *flowtimer = NULL;
 
 	if (!sip_msg_hdr_has_value(msg, SIP_HDR_REQUIRE, "outbound")) {
 		printf("No outbound header!\n");
-		return;
+		// return;
 	}
 
 	flowtimer = sip_msg_hdr(msg, SIP_HDR_FLOW_TIMER);
